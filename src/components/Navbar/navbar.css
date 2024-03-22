@@ -1,0 +1,19 @@
+.nav {
+  width: 100%;
+  top: 0;
+  left: 0;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  transition: transform 0.2s;
+}
+
+.nav--hidden {
+  transform: translateY(calc(-1 * var(--nav-height)));
+  box-shadow: none;
+}
+
+.nav__link {
+  color: #ffffff;
+  text-decoration: none;
+  margin: 0 1em;
+  font-weight: bold;
+}

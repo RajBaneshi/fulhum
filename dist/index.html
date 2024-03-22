@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <link rel="icon" href="https://d3rsva8zdn1qpf.cloudfront.net/sites/school82/files/2022-10/filham-school-logo.png" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="mobile-web-app-capable" content="yes" />
+  <meta name="theme-color" content="#000000" />
+  <link rel="apple-touch-icon"
+    href="https://d3rsva8zdn1qpf.cloudfront.net/sites/school82/files/2022-10/filham-school-logo.png" />
+  <!-- <script src="//cdn.jsdelivr.net/npm/eruda"></script>
+  <script>eruda.init();</script> -->
+  <script>    localStorage.removeItem("training");  </script>
+  <title>Fullham School</title>
+  <script type="module" crossorigin src="/assets/index-fPcgOkh_.js"></script>
+  <link rel="stylesheet" crossorigin href="/assets/index-3w8ffCLP.css">
+</head>
+
+<body>
+  <div id="root"></div>
+</body>
+<script>
+
+  const nav = document.querySelector(".nav");
+  let lastScrollY = window.scrollY;
+
+  window.addEventListener("scroll", () => {
+    if (lastScrollY < window.scrollY) {
+      nav.classList.add("nav--hidden");
+    } else {
+      nav.classList.remove("nav--hidden");
+    }
+
+    lastScrollY = window.scrollY;
+  });
+</script>
+
+</html>

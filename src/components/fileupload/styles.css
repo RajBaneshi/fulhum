@@ -1,0 +1,111 @@
+/* styles.css */
+.uploadButton {
+    background-color: royalblue;
+    color: white;
+    font-size: 12px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    padding: 10px 20px;
+    margin-top: 10px;
+    height: 40px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+
+}
+
+.uploadButton:hover {
+    background-color: blue;
+    color: white;
+}
+
+
+
+
+
+.fileButton {
+    background-color: royalblue;
+    color: white;
+    font-size: 12px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-right: 10px;
+    padding: 10px 10px;
+    padding-right: 10px;
+    margin-bottom: 2px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+
+}
+
+
+
+
+
+.submitButton {
+    background-color: royalblue;
+    color: white;
+    padding: 10px 20px;
+    margin-top: 10px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-bottom: 2px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.submitButton:hover {
+    background-color: blue;
+    color: white;
+}
+
+
+
+
+.buttonCollection {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+
+
+
+
+.Container {
+    max-width: 600px;
+    padding-top: 80px;
+    margin: auto;
+    border: none;
+    display: flex;
+    flex-direction: column;
+    z-index: 1;
+}
+
+
+
+.allData {
+    height: 100vh;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    /* background-image: url("https://d3rsva8zdn1qpf.cloudfront.net/sites/school82/files/styles/ins_banner/public/2022-11/fulham-homepage-banner-2.jpg.jpeg?itok=2k1_rAO8"); */
+    /* opacity: 0.9; */
+    box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.5);
+    /* background-color: rgba(0, 0, 0, 0.5); */
+}
+
+
+
+
+.textAreaAdd {
+    width: 100%;
+    height: 50px;
+    /* border: 2px; */
+
+}

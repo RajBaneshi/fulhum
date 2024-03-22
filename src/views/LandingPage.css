@@ -1,0 +1,164 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Serif+Georgian:wght@200&family=Open+Sans:ital,wght@0,300;1,400&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Noto+Serif+Georgian:wght@200;300&family=Open+Sans:ital,wght@0,300;1,400&display=swap');
+
+
+
+.content{
+    font-family: 'Noto Serif Georgian';
+}
+
+.heading{
+    font-family: 'Noto Serif Georgian';
+}
+
+.demo-wrap {
+    overflow: hidden;
+    position: relative;
+}
+
+.flex-container {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 80vh;
+    background-color: rgb(31 31 31);
+    /* Set a specific height or adjust as needed */
+}
+
+/* .flex-container::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url('https://d3rsva8zdn1qpf.cloudfront.net/sites/school82/files/styles/ins_banner/public/2022-11/fulham-homepage-banner-2.jpg.jpeg?itok=2k1_rAO8');
+    background-size: cover;
+    background-position: center;
+    opacity: 0.3;
+} */
+
+.top_container {
+    display: flex;
+    flex-direction: row;
+    /* Default to column layout */
+    height: 50vh;
+    /* z-index:10; */
+
+    /* Add any other styling you want for the container */
+}
+
+.top_container_div {
+    display: flex;
+    height: 60vh;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    opacity: 1;
+    border-radius: 0.5rem;
+}
+
+.slider_div {
+    width: 60%;
+}
+
+.slider_inner_div {
+    width: 100%;
+    display: flex;
+    height: 100%;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    background: rgb(31 31 31);
+}
+
+.video_div {
+    width: 40%;
+    /* opacity: 1; */
+    /* z-index: 1; */
+    border-radius: 5px;
+}
+
+.top_container_div {
+    height: "100%"
+}
+
+.video-container {
+    max-width: 800px;
+    margin: 0 auto;
+    overflow: hidden;
+    border-radius: 10px;
+    box-shadow: 2px 4px 15px rgba(0, 0, 0);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 10;
+    opacity: 1;
+    background: rgb(31 31 31);
+}
+
+.video-container video {
+    width: 100%;
+    background: linear-gradient(to top, #055489 0%, #0a2279 100%);
+    height: auto;
+    display: block;
+    object-fit: cover;
+    /* Ensure the video covers the container */
+}
+
+
+@media screen and (max-width: 768px) {
+    .top_container {
+        flex-direction: column;
+        /* Switch to row layout on mobile screens */
+
+        /* Add any other styling adjustments for mobile view */
+    }
+
+    .top_container div {
+        width: 100%;
+        flex-direction: row;
+        height: 30vh;
+    }
+
+    .top_container_div {
+        width: 100%;
+        height: 35vh ;
+        opacity: 1;
+       
+        justify-content: center;
+        align-items: center;
+        flex-direction: row;
+        width: 100vw;
+    }
+
+    .video-container video {
+        width: 60%;
+    }
+
+    .flex-container{
+        height: 80vh;
+    }
+}
+
+
+
+
+
+
+
+
+/* Optional: Add a play button overlay */
+.play-button {
+    display: none;
+    /* Hide the play button for autoplay */
+}
+
+/* Optional: Add styling for video poster (fallback image) */
+.video-container video::poster {
+    /* Your styling for the poster image */
+}

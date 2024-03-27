@@ -24,7 +24,7 @@ pipeline {
             }
             steps {
                 // Build the project
-                sh 'npm ci'
+                sh 'npm i'
                 sh 'npm run build'
             }
         }
@@ -34,7 +34,7 @@ pipeline {
                 script {
                     // Copy the build artifacts to the deployment server
                     sshagent(credentials: ['demoserver']) {
-                        sh "scp -rp dist* node_module* ${env.DEPLOY_USER}@${env.DEPLOY_SERVER}:${env.DEPLOY_PATH}" // Updated path to build artifacts
+                        sh "scp -rp dist* node_module* package* ${env.DEPLOY_USER}@${env.DEPLOY_SERVER}:${env.DEPLOY_PATH}" // Updated path to build artifacts
                     }
                 }
             }

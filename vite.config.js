@@ -51,4 +51,5 @@ export default defineConfig({
   },
   // plugins: [react(), VitePWA(manifestForPlugIn)],
   plugins:[ react()],
+  base: '/fullham/'
 });

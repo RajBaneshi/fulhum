@@ -17,7 +17,7 @@ pipeline {
         stage('Build') {
             steps {
                 // Build the project
-                sh 'npm ci --production' // Install only production dependencies
+                sh 'npm i --production' // Install only production dependencies
                 sh 'npm run build'
                 sh 'npm run rebuild:save:prod'
             }

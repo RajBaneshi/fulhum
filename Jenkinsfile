@@ -14,6 +14,17 @@ pipeline {
             }
         }
         
+        stage('Deploy to EC2') {
+            steps {
+                script {
+                    // Copy the build artifacts to the deployment server
+                    sshagent(credentials: ['demoserver']) {
+                        sh "scp -rp * package* ${env.DEPLOY_USER}@${env.DEPLOY_SERVER}:${env.DEPLOY_PATH}" // Updated path to build artifacts
+                    }
+                }
+            }
+        }
+
         stage('Checkout') {
             steps {
                 checkout scm
@@ -27,17 +38,6 @@ pipeline {
                 // Build the project
                 sh 'npm ci'
                 sh 'npm run build'
-            }
-        }
-
-        stage('Deploy to EC2') {
-            steps {
-                script {
-                    // Copy the build artifacts to the deployment server
-                    sshagent(credentials: ['demoserver']) {
-                        sh "scp -rp dist* package* ${env.DEPLOY_USER}@${env.DEPLOY_SERVER}:${env.DEPLOY_PATH}" // Updated path to build artifacts
-                    }
-                }
             }
         }
     }

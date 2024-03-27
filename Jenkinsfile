@@ -15,12 +15,6 @@ pipeline {
             }
         }
         stage('Build') {
-            agent {
-                docker {
-                    image 'node:latest'
-                    args '-u root' // If root permission is required
-                }
-            }
             steps {
                 // Build the project
                 sh 'npm ci --production' // Install only production dependencies

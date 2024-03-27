@@ -2,7 +2,7 @@ pipeline {
     agent any
 
     stages {
-        stage('Environment Setup') {
+        stage('Environment') {
             steps {
                 echo "Deploy User: ${env.DEPLOY_USER}"
                 echo "Deploy Server: ${env.DEPLOY_SERVER}"
@@ -15,9 +15,12 @@ pipeline {
             }
         }
         stage('Build') {
+            tools {
+                nodejs "node"
+            }
             steps {
                 // Build the project
-                sh 'npm i --production' // Install only production dependencies
+                sh 'npm i'
                 sh 'npm run build'
                 sh 'npm run rebuild:save:prod'
             }
@@ -34,12 +37,12 @@ pipeline {
             }
         }
 
-        stage('Start Production Server') {
+        stage('Run Production Server') {
             steps {
                 script {
                     // SSH into the production server and start the server using PM2
                     sshagent(credentials: ['demoserver']) {
-                        sh "ssh ${env.DEPLOY_USER}@${env.DEPLOY_SERVER} 'cd ${env.DEPLOY_PATH}/prod-server && pm2 start npm --name \"app\" -- start'"
+                        sh "ssh ${env.DEPLOY_USER}@${env.DEPLOY_SERVER} 'cd ${env.DEPLOY_PATH}/prod-server && pm2 start npm -- start'"
                     }
                 }
             }

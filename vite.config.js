@@ -49,7 +49,8 @@ export default defineConfig({
   server: {
     port: 5010,
   },
-  // plugins: [react(), VitePWA(manifestForPlugIn)],
-  plugins:[ react()],
-  base: '/fullham/'
+  plugins: [
+    react(),
+  ],
+  base: '/fullham/' // Specify your desired base URL here
 });

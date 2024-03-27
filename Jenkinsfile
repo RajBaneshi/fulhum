@@ -1,6 +1,10 @@
 pipeline {
     agent any
 
+    environment {
+        SSH_KEY = credentials('demoserver')
+    }
+
     stages {
         stage('Environment') {
             steps {
@@ -22,7 +26,6 @@ pipeline {
                 // Build the project
                 sh 'npm i'
                 sh 'npm run build'
-                sh 'npm run rebuild:save:prod'
             }
         }
         
@@ -31,21 +34,11 @@ pipeline {
                 script {
                     // Copy the build artifacts to the deployment server
                     sshagent(credentials: ['demoserver']) {
-                        sh "scp -rp prod-server ${env.DEPLOY_USER}@${env.DEPLOY_SERVER}:${env.DEPLOY_PATH}"
+                        sh "scp -rp dist* node_module* package* ${env.DEPLOY_USER}@${env.DEPLOY_SERVER}:${env.DEPLOY_PATH}" // Updated path to build artifacts
                     }
                 }
             }
         }
 
-        stage('Run Production Server') {
-            steps {
-                script {
-                    // SSH into the production server and start the server using PM2
-                    sshagent(credentials: ['demoserver']) {
-                        sh "ssh ${env.DEPLOY_USER}@${env.DEPLOY_SERVER} 'cd ${env.DEPLOY_PATH}/prod-server && pm2 start npm -- start'"
-                    }
-                }
-            }
-        }
     }
 }

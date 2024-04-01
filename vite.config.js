@@ -47,10 +47,11 @@ import { VitePWA } from "vite-plugin-pwa";
 // https://vitejs.dev/config/
 export default defineConfig({
   server: {
+    host: 0.0.0.0;
     port: 5010,
   },
   plugins: [
     react(),
   ],
-  base: '/fullham/' // Specify your desired base URL here
+  // base: '/fullham/' // Specify your desired base URL here
 });

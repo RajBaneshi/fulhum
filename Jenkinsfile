@@ -28,7 +28,7 @@ pipeline {
                 script {
                     // SSH into the deployment server and run npm install and npm run build
                     sshagent(credentials: ['demoserver']) {
-                        sh "ssh ${env.DEPLOY_USER}@${env.DEPLOY_SERVER} 'cd ${env.DEPLOY_PATH} && npm install && npm run build'"
+                        sh "ssh ${env.DEPLOY_USER}@${env.DEPLOY_SERVER} 'cd ${env.DEPLOY_PATH} && npm ci && npm run build'"
                     }
                 }
             }

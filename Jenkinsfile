@@ -38,7 +38,7 @@ pipeline {
                 script {
                     // SSH into the deployment server and start the server with npm run dev
                     sshagent(credentials: ['demoserver']) {
-                    sh "ssh ${env.DEPLOY_USER}@${env.DEPLOY_SERVER} 'cd ${env.DEPLOY_PATH} && pm2 delete fullham || true && pm2 start \"npm\" -- run dev -- --host'"
+                    sh "ssh ${env.DEPLOY_USER}@${env.DEPLOY_SERVER} 'cd ${env.DEPLOY_PATH} && pm2 delet fullham'"
 
                     }
                 }

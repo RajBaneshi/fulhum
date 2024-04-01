@@ -18,16 +18,16 @@ pipeline {
                 checkout scm
             }
         }
-        stage('Build') {
-            tools {
-                nodejs "node"
-            }
-            steps {
-                // Build the project
-                sh 'npm i'
-                sh 'npm run build'
-            }
-        }
+        // stage('Build') {
+        //     tools {
+        //         nodejs "node"
+        //     }
+        //     steps {
+        //         // Build the project
+        //         sh 'npm i'
+        //         sh 'npm run build'
+        //     }
+        // }
         
         stage('Deploy to EC2') {
             steps {

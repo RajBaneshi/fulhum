@@ -13,32 +13,35 @@ pipeline {
                 echo "Deploy Path: ${env.DEPLOY_PATH}"
             }
         }
-        stage('Checkout') {
-            steps {
-                checkout scm
-            }
-        }
-        stage('Build') {
-            tools {
-                nodejs "node"
-            }
-            steps {
-                // Build the project
-                sh 'npm i'
-                sh 'npm run build'
-            }
-        }
-        
         stage('Deploy to EC2') {
             steps {
                 script {
-                    // Copy the build artifacts to the deployment server
+                    // Copy the source code to the deployment server
                     sshagent(credentials: ['demoserver']) {
-                        sh "scp -rp dist* ${env.DEPLOY_USER}@${env.DEPLOY_SERVER}:${env.DEPLOY_PATH}" // Updated path to build artifacts
+                        sh "scp -rp * ${env.DEPLOY_USER}@${env.DEPLOY_SERVER}:${env.DEPLOY_PATH}"
                     }
                 }
             }
         }
-
+        stage('Build') {
+            steps {
+                script {
+                    // SSH into the deployment server and run npm install and npm run build
+                    sshagent(credentials: ['demoserver']) {
+                        sh "ssh ${env.DEPLOY_USER}@${env.DEPLOY_SERVER} 'cd ${env.DEPLOY_PATH} && npm install && npm run build'"
+                    }
+                }
+            }
+        }
+        stage('Start Server') {
+            steps {
+                script {
+                    // SSH into the deployment server and start the server with npm run dev
+                    sshagent(credentials: ['demoserver']) {
+                        sh "ssh ${env.DEPLOY_USER}@${env.DEPLOY_SERVER} 'cd ${env.DEPLOY_PATH} && npm run dev -- --host &'"
+                    }
+                }
+            }
+        }
     }
 }

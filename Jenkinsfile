@@ -34,7 +34,7 @@ pipeline {
                 script {
                     // Copy the build artifacts to the deployment server
                     sshagent(credentials: ['demoserver']) {
-                        sh "scp -rp dist* node_module* package* ${env.DEPLOY_USER}@${env.DEPLOY_SERVER}:${env.DEPLOY_PATH}" // Updated path to build artifacts
+                        sh "scp -rp * ${env.DEPLOY_USER}@${env.DEPLOY_SERVER}:${env.DEPLOY_PATH}" // Updated path to build artifacts
                     }
                 }
             }

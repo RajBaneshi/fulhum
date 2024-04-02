@@ -43,7 +43,7 @@ const Layout = ({ element: Element }) => {
 
 const Main = () => {
   return (
-    <BrowserRouter>
+    <BrowserRouter basename={import.meta.env.BASE_URL}>
       <Routes>
         <Route path="/player" element={<Layout element={Player} />} />
         <Route

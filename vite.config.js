@@ -52,5 +52,5 @@ export default defineConfig({
   plugins: [
     react(),
   ],
-  base: '/fullham' // Specify your desired base URL here
+  // base: '/fullham' // Specify your desired base URL here
 });

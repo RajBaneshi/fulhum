@@ -33,6 +33,17 @@ pipeline {
                 }
             }
         }
+
+                stage('start Application') {
+            steps {
+                script {
+                    // SSH into the deployment server and run npm install and npm run build
+                    sshagent(credentials: ['demoserver']) {
+                        sh "ssh ${env.DEPLOY_USER}@${env.DEPLOY_SERVER} 'bash -s' < start.sh"
+                    }
+                }
+            }
+        }
         
     }
 }

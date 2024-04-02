@@ -35,17 +35,15 @@ pipeline {
         }
 
                 stage('start Application') {
-            stage('start Application') {
-    steps {
-        script {
-            // SSH into the deployment server and run start.sh script
-            sshagent(credentials: ['demoserver']) {
-                sh "ssh ${env.DEPLOY_USER}@${env.DEPLOY_SERVER} 'cd ${env.DEPLOY_PATH} && bash -s' < start.sh"
-            }
-        }
-    }
-}
+            steps {
+                script {
+                    // SSH into the deployment server and run npm install and npm run build
+                    sshagent(credentials: ['demoserver']) {
+                    sh "ssh ${env.DEPLOY_USER}@${env.DEPLOY_SERVER} 'cd ${env.DEPLOY_PATH} && chmod +x start.sh && ./start.sh'"
 
+                    }
+                }
+            }
         }
         
     }
